@@ -2,9 +2,13 @@ package com.rickjinny.java8.dateapi;
 
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.zone.ZoneRules;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -34,5 +38,20 @@ public class Java8DateApi {
         ZoneId zoneId1 = ZoneId.of("Europe/Berlin");
         ZoneRules zoneRules = zoneId1.getRules();
         System.out.println("zoneRules = " + zoneRules);
+
+        /**
+         * 第三、LocalTime 本地时间
+         * LocalTime 定义了一个没有时区信息的时间
+         */
+        LocalTime now = LocalTime.now();
+        System.out.println("now = " + now);
+        // LocalTime提供了多种工厂方法来简化对象的创建，包括解析时间字符串
+        LocalTime localTime = LocalTime.of(21, 20, 30);
+        System.out.println("localTime = " + localTime);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofLocalizedTime(FormatStyle.SHORT)
+                .withLocale(Locale.GERMAN);
+        LocalTime time = LocalTime.parse("19:28", dateTimeFormatter);
+        System.out.println("time = " + time);
     }
 }
