@@ -44,12 +44,31 @@ public class Java8Stream03 {
          * 第三、两个 List 集合的差集: listB - listA
          */
         List<String> list3 = listB.stream().filter(item -> !listA.contains(item)).collect(Collectors.toList());
-        System.out.println("2、listB 与 listA 的差集: ");
+        System.out.println("3、listB 与 listA 的差集: ");
         list3.parallelStream().forEach(System.out::println);
 
         /**
          * 第四、两个 List 集合的并集
          */
+        List<String> list4 = listA.parallelStream().collect(Collectors.toList());
+        List<String> list5 = listB.parallelStream().collect(Collectors.toList());
+        list4.addAll(list5);
+        System.out.println("4、listA 与 listB 的并集");
+        list4.parallelStream().forEachOrdered(System.out::println);
 
+        /**
+         * 第五、两个 List 集合去重并集
+         */
+        List<String> list6 = list4.stream().distinct().collect(Collectors.toList());
+        System.out.println("5、得到去重并集 list6");
+        list6.parallelStream().forEachOrdered(System.out::println);
+
+        /**
+         * 第六、原来的两个集合：listA 和 listB
+         */
+        System.out.println("原来的listA: ");
+        listA.parallelStream().forEachOrdered(System.out::println);
+        System.out.println("原来的listB: ");
+        listB.parallelStream().forEachOrdered(System.out::println);
     }
 }
