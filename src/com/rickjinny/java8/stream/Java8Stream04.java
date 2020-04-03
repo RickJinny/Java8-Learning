@@ -18,8 +18,6 @@ public class Java8Stream04 {
         list.add(new Student(9, "第9号学生", 20, "男"));
         list.add(new Student(10, "第10号学生", 19, "女"));
 
-
-
         /**
          * 1、把学生的年龄都变为20
          */
